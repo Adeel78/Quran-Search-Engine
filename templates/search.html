@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+ 
+     <h2>Search Word: {{ word }}</h2>
+     <h2>Occurrences: {{ results[0] }}</h2>
+        <hr>
+        {% for result in results[1:] %}
+	
+            <h2>Verse No: {{ result.verse_no }}</h2>
+            <p>Arabic: {{ result.Arabic }}</p>
+            <p>Urdu: {{ result.Urdu }}</p>
+            <p>Urdu WBW: {{ result.Wbw_Urdu }}</p>
+            <p>English: {{ result.Eng }}</p>
+            <p>English WBW: {{ result.Wbw_Eng }}</p>
+            <p>Tafseer: {{ result.Tafseer }}</p>
+            <hr>
+        {% endfor %}
+
+</body>
+</html>

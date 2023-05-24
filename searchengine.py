@@ -119,7 +119,9 @@ with open(filename, 'r',encoding='utf-8') as file:
             value += line
     if key is not None:
         result1[key] = value.strip().replace('\n', '|')
-
+for key, value in result1.items():
+    if value is None:
+        result1[key] = 'NO DATA'
 filename = 'wbwenglish.txt'  # Replace with the path to your text file
 
 
@@ -139,10 +141,15 @@ with open(filename, 'r',encoding='utf-8') as file:
             value += line
     if key is not None:
         result2[key] = value.strip().replace('\n', '|')
-
+for key, value in result2.items():
+    if value is None:
+        print(3)
+        result2[key] = 'NO DATA'
 
 
 app = Flask(__name__)
+
+
 @app.route('/')
 def search_page():
     return render_template('search_page.html')
@@ -171,11 +178,15 @@ def search(search_word=None, language=None):
                 verse_no = a1
                 arabic = res.get(a1)
                 urdu = res1.get(a1)
-                wbw_urdu = result1.get(a1)
                 eng = res2.get(a1)
-                wbw_eng = result2.get(a1)
-                tafseer = res3.get(a1)
-                
+                if result1.get(a1) != None:
+                    wbw_urdu = result1.get(a1)
+                    wbw_eng = result2.get(a1)
+                    tafseer = res3.get(a1)
+                else:
+                    wbw_urdu = "No Data"
+                    wbw_eng = "No Data"
+                    tafseer = "No Data"                
                 result = {
                     "verse_no": verse_no,
                     "Arabic": arabic,
@@ -184,7 +195,7 @@ def search(search_word=None, language=None):
                     "Eng": eng,
                     "Wbw_Eng": wbw_eng,
                     "Tafseer": tafseer,
-                }
+                }   
                 results.append(result)
                 count += 1
                 c += 1
@@ -205,10 +216,15 @@ def search(search_word=None, language=None):
                 verse_no = a1
                 arabic = res.get(a1)
                 urdu = res1.get(a1)
-                wbw_urdu = result1.get(a1)
                 eng = res2.get(a1)
-                wbw_eng = result2.get(a1)
-                tafseer = res3.get(a1)
+                if result1.get(a1) != None:
+                    wbw_urdu = result1.get(a1)
+                    wbw_eng = result2.get(a1)
+                    tafseer = res3.get(a1)
+                else:
+                    wbw_urdu = "No Data"
+                    wbw_eng = "No Data"
+                    tafseer = "No Data"
                 
                 result = {
                     "verse_no": verse_no,
@@ -238,10 +254,15 @@ def search(search_word=None, language=None):
                 verse_no = a1
                 arabic = res.get(a1)
                 urdu = res1.get(a1)
-                wbw_urdu = result1.get(a1)
                 eng = res2.get(a1)
-                wbw_eng = result2.get(a1)
-                tafseer = res3.get(a1)
+                if result1.get(a1) != None:
+                    wbw_urdu = result1.get(a1)
+                    wbw_eng = result2.get(a1)
+                    tafseer = res3.get(a1)
+                else:
+                    wbw_urdu = "No Data"
+                    wbw_eng = "No Data"
+                    tafseer = "No Data"
                 
                 result = {
                     "verse_no": verse_no,
